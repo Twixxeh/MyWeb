@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="regis.css">
+        <title>My Website</title>
+        <link rel="icon" type="image/icon" href="Media/logos.png">
+    </head>
+    <body>
+        <div class="navs">
+        <ul>
+            <div class="logo"><p>ALwebsite</p></div>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="aboutme.html">ABOUT</a></li>
+            <li><a href="gallerys.html">GALLERY</a></li>
+            <li><a href="contacts.html">CONTACTS</a></li>
+            <li><a href="registration.html">REGISTER</a></li>
+        </ul>
+    </div>
+        
+    
+    <div class="form">
+    <h1>Registration Form</h1>
+<label for="ID">First Name:</label>
+<input type="ftext"placeholder="First Name"required><br>
+<label for="ID">Middle Name:</label>
+<input type="ftext"placeholder="Middle Name"required><br>
+<label for="ID">Last Name:</label>
+<input type="ltext"placeholder="Last Name"required><br>
+<label for="Course">Course:</label>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+    let firstName = document.querySelector('input[placeholder="First Name"]').value.trim();
+    let middleName = document.querySelector('input[placeholder="Middle Name"]').value.trim();
+    let lastName = document.querySelector('input[placeholder="Last Name"]').value.trim();
+    let course = document.querySelector('input[placeholder="Course"]').value.trim(); // Add an input for "Course" to the form.
+
+    if (!firstName || !middleName || !lastName || !course) {
+        event.preventDefault();
+        alert("Please fill out all fields before submitting the form.");
+    }
+});
+</script>
+
+<select name= "Course" id=Course>
+<option value=""></option>
+<option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
+<option value="Bachelor of Science in Mechanical Engineering">Bachelor of Science in Mechanical Engineering</option>
+<option value="Bachelor of Science in Accountancy">Bachelor of Science in Accountancy</option>
+<option value="Bachelor of Science in Medical Technology">Bachelor of Science in Medical Technology</option>
+<option value="Bachelor of Science in Business Administration">Bachelor of Science in Business Administration</option>
+<option value="Bachelor of Science in Civil Engineering">Bachelor of Science in Civil Engineering</option>
+<option value="Bachelor of Science in Nursing">Bachelor of Science in Nursing</option>
+</select><br><br>
+
+<label for="dobMonth">Date of Birth:</label>
+    <select id="dobMonth" name="dobMonth">
+    <option value="">Month</option>
+    <option value="01">January</option>
+    <option value="02">February</option>
+    <option value="03">March</option>
+    <option value="04">April</option>
+    <option value="05">May</option>
+    <option value="06">June</option>
+    <option value="07">July</option>
+    <option value="08">August</option>
+    <option value="09">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+    </select>
+
+    <select id="dobDay" name="dobDay">
+        <option value="">Day</option>
+        <script>
+            for (let i = 1; i <= 31; i++) {
+                document.write('<option value="' + i + '">' + i + '</option>');
+            }
+        </script>
+    </select>
+
+    <select id="dobYear" name="dobYear">
+        <option value="">Year</option>
+        <script>
+            let currentYear = new Date().getFullYear();
+            for (let i = currentYear; i >= 1900; i--) {
+                document.write('<option value="' + i + '">' + i + '</option>');
+            }
+        </script>
+    </select><br>
+
+<label for="ID">Contact Number:</label>
+<input type="numbertext"placeholder="(000) 000 00000"required><br>
+<label for="ID">Email Address:</label>
+<input type="emailtext"placeholder="name@example.com"required><br>
+
+<div class="button">
+    <button style="background-color: bisque; margin-right: 30px; height: 25px; width: 60px;">Submit</button>
+    </div>
+    </div>
+
+    <script>
+        document.querySelector("button").addEventListener("click", function(event) {
+    let firstName = document.querySelector('input[placeholder="First Name"]').value.trim();
+    let middleName = document.querySelector('input[placeholder="Middle Name"]').value.trim();
+    let lastName = document.querySelector('input[placeholder="Last Name"]').value.trim();
+    let course = document.querySelector('select[name="Course"]').value.trim();
+    let dobMonth = document.getElementById("dobMonth").value;
+    let dobDay = document.getElementById("dobDay").value;
+    let dobYear = document.getElementById("dobYear").value;
+    let contactNumber = document.querySelector('input[placeholder="(000) 000 00000"]').value.trim();
+    let email = document.querySelector('input[placeholder="name@example.com"]').value.trim();
+
+    if (!firstName || !middleName || !lastName || !course || !dobMonth || !dobDay || !dobYear || !contactNumber || !email) {
+        event.preventDefault();
+        alert("Please fill out all fields before submitting the form.");
+        return;
+    }
+    let namePattern = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let contactNumberPattern = /^\d{11}$/;
+
+    if (!namePattern.test(firstName)) {
+        event.preventDefault();
+        alert("First Name can only contain letters.");
+        return;
+    }
+    if (!namePattern.test(middleName)) {
+        event.preventDefault();
+        alert("Middle Name can only contain letters.");
+        return;
+    }
+    if (!namePattern.test(lastName)) {
+        event.preventDefault();
+        alert("Last Name can only contain letters.");
+        return;
+    }
+
+    if (!emailPattern.test(email)) {
+        event.preventDefault();
+        alert("Please enter a valid email address.");
+        return;
+    }
+    if (!contactNumberPattern.test(contactNumber)) {
+        event.preventDefault();
+        alert("Please enter a valid contact number (11 digits only).");
+        return;
+    }
+
+    alert(`The form has been submitted successfully! 
+    Here is the inputted data:
+    First Name: ${firstName}
+    Middle Name: ${middleName}
+    Last Name: ${lastName}
+    Course: ${course}
+    Date of Birth: ${dobMonth}-${dobDay}-${dobYear}
+    Contact Number: ${contactNumber}
+    Email: ${email}`);
+});
+    </script>
+    </body>
+</html>
